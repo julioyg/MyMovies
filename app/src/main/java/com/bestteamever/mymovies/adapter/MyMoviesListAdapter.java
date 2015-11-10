@@ -7,11 +7,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.bestteamever.mymovies.R;
 import com.bestteamever.mymovies.model.Movie;
 
 import java.util.List;
 
-import bestteamever.com.mymovies.R;
 
 public class MyMoviesListAdapter extends BaseAdapter {
     private final Context mContext;

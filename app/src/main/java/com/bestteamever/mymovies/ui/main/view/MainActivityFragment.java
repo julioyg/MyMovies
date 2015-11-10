@@ -7,10 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.bestteamever.mymovies.R;
 import com.bestteamever.mymovies.adapter.MyMoviesListAdapter;
 import com.bestteamever.mymovies.repository.MyMoviesRepository;
 
-import bestteamever.com.mymovies.R;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 

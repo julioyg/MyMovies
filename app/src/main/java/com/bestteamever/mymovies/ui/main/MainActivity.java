@@ -6,7 +6,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import bestteamever.com.mymovies.R;
+import com.bestteamever.mymovies.R;
+
 
 public class MainActivity extends AppCompatActivity {
 
