@@ -1,9 +1,9 @@
-package bestteamever.com.mymovies.repository;
+package com.bestteamever.mymovies.repository;
+
+import com.bestteamever.mymovies.model.Movie;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import bestteamever.com.mymovies.model.Movie;
 
 public class MyMoviesRepository {
     public List<Movie> getList() {

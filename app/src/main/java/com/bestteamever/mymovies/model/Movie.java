@@ -1,4 +1,4 @@
-package bestteamever.com.mymovies.model;
+package com.bestteamever.mymovies.model;
 
 public class Movie {
     private String mTilte;

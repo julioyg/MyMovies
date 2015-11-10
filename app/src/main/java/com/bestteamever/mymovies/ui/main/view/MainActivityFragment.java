@@ -1,4 +1,4 @@
-package bestteamever.com.mymovies.ui.main.view;
+package com.bestteamever.mymovies.ui.main.view;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,9 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.bestteamever.mymovies.adapter.MyMoviesListAdapter;
+import com.bestteamever.mymovies.repository.MyMoviesRepository;
+
 import bestteamever.com.mymovies.R;
-import bestteamever.com.mymovies.adapter.MyMoviesListAdapter;
-import bestteamever.com.mymovies.repository.MyMoviesRepository;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 

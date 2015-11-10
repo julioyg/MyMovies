@@ -1,4 +1,4 @@
-package bestteamever.com.mymovies.ui.main;
+package com.bestteamever.mymovies.ui.main;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

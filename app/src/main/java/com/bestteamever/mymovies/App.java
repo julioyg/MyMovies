@@ -1,4 +1,4 @@
-package bestteamever.com.mymovies;
+package com.bestteamever.mymovies;
 
 import android.app.Application;
 

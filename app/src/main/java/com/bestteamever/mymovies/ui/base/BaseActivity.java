@@ -1,4 +1,4 @@
-package bestteamever.com.mymovies.ui.base;
+package com.bestteamever.mymovies.ui.base;
 
 public class BaseActivity {
 }

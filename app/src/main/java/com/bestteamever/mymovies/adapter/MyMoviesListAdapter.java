@@ -1,4 +1,4 @@
-package bestteamever.com.mymovies.adapter;
+package com.bestteamever.mymovies.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,10 +7,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.bestteamever.mymovies.model.Movie;
+
 import java.util.List;
 
 import bestteamever.com.mymovies.R;
-import bestteamever.com.mymovies.model.Movie;
 
 public class MyMoviesListAdapter extends BaseAdapter {
     private final Context mContext;
