@@ -28,12 +28,12 @@ public class Movie {
         private Builder() {
         }
 
-        public Builder withMTilte(String val) {
+        public Builder withTilte(String val) {
             mTilte = val;
             return this;
         }
 
-        public Builder withMDate(String val) {
+        public Builder withDate(String val) {
             mDate = val;
             return this;
         }

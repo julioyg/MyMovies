@@ -1,19 +1,16 @@
 package com.bestteamever.mymovies.adapter;
 
 import android.content.Context;
-import android.view.LayoutInflater;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
 
-import com.bestteamever.mymovies.R;
 import com.bestteamever.mymovies.model.Movie;
+import com.bestteamever.mymovies.ui.main.view.movie.MovieViewItem;
 
 import java.util.List;
 
-
-public class MyMoviesListAdapter extends BaseAdapter {
+public class MyMoviesListAdapter extends RecyclerView.Adapter<MyMoviesListAdapter.ViewHolder> {
     private final Context mContext;
     private List<Movie> mItems;
 
@@ -23,45 +20,27 @@ public class MyMoviesListAdapter extends BaseAdapter {
     }
 
     @Override
-    public int getCount() {
-        return mItems.size();
+    public MyMoviesListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        return new ViewHolder(new MovieViewItem(mContext));
     }
 
     @Override
-    public Movie getItem(int i) {
-        return mItems.get(i);
+    public void onBindViewHolder(MyMoviesListAdapter.ViewHolder holder, int position) {
+        holder.bind(mItems.get(position));
     }
 
     @Override
-    public long getItemId(int i) {
-        return 0;
+    public int getItemCount() {
+        return mItems == null ?  0 : mItems.size();
     }
 
-    @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
-        Holder holder;
-        if (view == null) {
-            holder = new Holder();
-            view = LayoutInflater.from(mContext).inflate(R.layout.view_movie_item, viewGroup,
-                                                         false);
-            holder.date = (TextView) view.findViewById(R.id.date);
-            holder.title = (TextView) view.findViewById(R.id.title);
-
-            view.setTag(holder);
-        } else {
-            holder = (Holder) view.getTag();
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        public ViewHolder(View itemView) {
+            super(itemView);
         }
 
-        Movie item = getItem(i);
-
-        holder.title.setText(item.getTilte());
-        holder.date.setText(item.getDate());
-
-        return view;
-    }
-
-    static class Holder {
-        TextView title;
-        TextView date;
+        public void bind(Movie movie) {
+            ((MovieViewItem) super.itemView).bind(movie);
+        }
     }
 }
