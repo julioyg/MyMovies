@@ -1,8 +1,12 @@
 package com.bestteamever.mymovies.model;
 
-public class Movie {
+import java.io.Serializable;
+
+public class Movie implements Serializable {
     private String mTilte;
     private String mDate;
+    private String mOverview;
+    private String mPoster;
 
     private Movie(Builder builder) {
         mTilte = builder.mTilte;
@@ -19,6 +23,14 @@ public class Movie {
 
     public String getDate() {
         return mDate;
+    }
+
+    public String getOverview() {
+        return mOverview;
+    }
+
+    public String getPoster() {
+        return mPoster;
     }
 
     public static final class Builder {
