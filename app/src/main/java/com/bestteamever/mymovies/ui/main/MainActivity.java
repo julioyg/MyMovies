@@ -1,15 +1,20 @@
 package com.bestteamever.mymovies.ui.main;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.bestteamever.mymovies.R;
+import com.bestteamever.mymovies.dagger.HasComponent;
+import com.bestteamever.mymovies.dagger.component.DaggerMainComponent;
+import com.bestteamever.mymovies.dagger.component.MainComponent;
+import com.bestteamever.mymovies.dagger.module.MainModule;
+import com.bestteamever.mymovies.ui.activity.BaseActivity;
 
+public class MainActivity extends BaseActivity implements HasComponent<MainComponent> {
 
-public class MainActivity extends AppCompatActivity {
+    private MainComponent mActivityComponent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +22,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        initializeInjector();
+    }
+
+    private void initializeInjector() {
+        this.mActivityComponent = DaggerMainComponent.builder()
+                                                     .applicationComponent(getApplicationComponent())
+                                                     .mainModule(new MainModule())
+                                                     .build();
     }
 
     @Override
@@ -39,5 +52,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public MainComponent getComponent() {
+        return this.mActivityComponent;
     }
 }

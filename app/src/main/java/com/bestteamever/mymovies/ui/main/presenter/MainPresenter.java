@@ -6,9 +6,16 @@ import com.bestteamever.mymovies.ui.main.view.MainView;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 public class MainPresenter implements GetMovieListInteractor.Callback {
-    private final GetMovieListInteractor mGetMovieListInteractor = new GetMovieListInteractor();
+    private final GetMovieListInteractor mGetMovieListInteractor;
     private MainView mView;
+
+    @Inject
+    public MainPresenter(GetMovieListInteractor getMovieListInteractor) {
+        mGetMovieListInteractor = getMovieListInteractor;
+    }
 
     public void takeView(MainView view) {
         this.mView = view;

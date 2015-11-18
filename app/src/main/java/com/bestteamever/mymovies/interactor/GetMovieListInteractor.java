@@ -7,21 +7,31 @@ import com.bestteamever.mymovies.repository.movie.MovieRepository;
 
 import java.util.List;
 
-public class GetMovieListInteractor {
+import javax.inject.Inject;
 
-    public void get(Callback callback) {
-        new GetMovieListInteractorAsyncTask(callback).executeOnExecutor(AsyncTask.SERIAL_EXECUTOR);
-    }
+public class GetMovieListInteractor {
 
     public interface Callback {
         void onMoviesList(List<Movie> movies);
     }
 
+    private final MovieRepository mRepository;
+
+    @Inject
+    public GetMovieListInteractor(MovieRepository repository) {
+        mRepository = repository;
+    }
+
+    public void get(Callback callback) {
+        new GetMovieListInteractorAsyncTask(mRepository, callback).executeOnExecutor(AsyncTask.SERIAL_EXECUTOR);
+    }
+
     static class GetMovieListInteractorAsyncTask extends AsyncTask<Void, Void, List<Movie>> {
-        private final MovieRepository mMovieRepository = new MovieRepository();
+        private final MovieRepository mMovieRepository;
         private final Callback mCallback;
 
-        public GetMovieListInteractorAsyncTask(Callback callback) {
+        public GetMovieListInteractorAsyncTask(MovieRepository movieRepository, Callback callback) {
+            mMovieRepository = movieRepository;
             this.mCallback = callback;
         }
 

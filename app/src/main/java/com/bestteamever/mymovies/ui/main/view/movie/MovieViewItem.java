@@ -26,7 +26,7 @@ public class MovieViewItem extends FrameLayout {
     }
 
     public void bind(Movie movie) {
-        mTitleView.setText(movie.getTilte());
+        mTitleView.setText(movie.getTitle());
         mDateView.setText(movie.getDate());
     }
 }

@@ -23,8 +23,7 @@ public class MovieCloudDataSource implements MovieDataSource {
 
     private final Gson mGson = new Gson();
     String strUrl =
-            "http://api.myapifilms.com/tmdb/searchMovie?movieName=frozen&token=b651984d-945f" +
-                    "-4df0-b686-bf2206df3142&format=json&language=en&includeAdult=1";
+            "http://api.myapifilms.com/tmdb/searchMovie?movieName=frozen&token=b651984d-945f-4df0-b686-bf2206df3142&format=json&language=en&includeAdult=1";
 
     @Override
     public List<Movie> get() {

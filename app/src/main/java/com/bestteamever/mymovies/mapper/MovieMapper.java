@@ -22,6 +22,6 @@ public class MovieMapper {
         String title = JsonUtils.getAsString(movie.get("title"));
         String date = JsonUtils.getAsString(movie.get("release_date"));
 
-        return Movie.newBuilder().withTilte(title).withDate(date).build();
+        return Movie.newBuilder().withTitle(title).withDate(date).build();
     }
 }
