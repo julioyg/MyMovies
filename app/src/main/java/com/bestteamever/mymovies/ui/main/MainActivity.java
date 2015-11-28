@@ -22,12 +22,12 @@ public class MainActivity extends BaseActivity implements HasComponent<MainCompo
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        initializeInjector();
+        this.initializeInjector();
     }
 
     private void initializeInjector() {
         this.mActivityComponent = DaggerMainComponent.builder()
-                                                     .applicationComponent(getApplicationComponent())
+                                                     .applicationComponent(super.getApplicationComponent())
                                                      .mainModule(new MainModule())
                                                      .build();
     }

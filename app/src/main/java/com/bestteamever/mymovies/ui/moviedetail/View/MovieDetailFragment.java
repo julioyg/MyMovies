@@ -1,6 +1,5 @@
 package com.bestteamever.mymovies.ui.moviedetail.View;
 
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -18,17 +17,13 @@ import butterknife.ButterKnife;
 
 public class MovieDetailFragment extends Fragment {
 
-    @Bind(R.id.poster) ImageView mPosterView;
-    @Bind(R.id.original_title)
-    TextView mOriginalTitleView;
-    @Bind(R.id.release_date)
-    TextView mReleaseDateView;
-    @Bind(R.id.overview)
-    TextView mOverview;
+    @Bind (R.id.poster) ImageView mPosterView;
+    @Bind (R.id.original_title) TextView mOriginalTitleView;
+    @Bind (R.id.release_date) TextView mReleaseDateView;
+    @Bind (R.id.overview) TextView mOverview;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View result = inflater.inflate(R.layout.fragment_movie_detail, container, false);
 
         ButterKnife.bind(this, result);
@@ -39,8 +34,8 @@ public class MovieDetailFragment extends Fragment {
     }
 
     private void render(Movie movie) {
-        mOriginalTitleView.setText(movie.getTilte());
+        mOriginalTitleView.setText(movie.getTitle());
         mReleaseDateView.setText(movie.getDate());
-        mOverview.setText(movie.getOverview());
+        mOverview.setText(movie.getOverView());
     }
 }
