@@ -8,5 +8,5 @@ import java.util.List;
 import rx.Observable;
 
 public interface MovieDataSource {
-    Observable<List<Movie>> get(Authorization authorization);
+    Observable<List<Movie>> get(Authorization authorization, String title);
 }

@@ -8,6 +8,6 @@ import rx.Observable;
 
 public interface RestApi {
 
-    @GET ("searchMovie?movieName=frozen")
-    Observable<JsonObject> getMovieList(@Query ("token") String token);
+    @GET ("searchMovie")
+    Observable<JsonObject> getMovieList(@Query ("token") String token, @Query ("movieName") String title);
 }

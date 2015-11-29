@@ -7,5 +7,5 @@ import java.util.List;
 import rx.Observable;
 
 public interface MovieRepository {
-    Observable<List<Movie>> getList();
+    Observable<List<Movie>> getList(String title);
 }

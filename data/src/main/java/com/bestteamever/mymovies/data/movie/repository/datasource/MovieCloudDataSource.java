@@ -14,9 +14,9 @@ public class MovieCloudDataSource implements MovieDataSource {
     private static final String END_POINT = "http://api.myapifilms.com/tmdb/";
 
     @Override
-    public Observable<List<Movie>> get(Authorization authorization) {
+    public Observable<List<Movie>> get(Authorization authorization, String title) {
         return ServiceGenerator.createService(RestApi.class, END_POINT)
-                               .getMovieList(authorization.getToken())
+                               .getMovieList(authorization.getToken(), title)
                                .map(MovieMapper::transform);
     }
 }

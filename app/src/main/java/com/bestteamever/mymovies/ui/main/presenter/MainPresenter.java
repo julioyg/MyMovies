@@ -22,7 +22,7 @@ public class MainPresenter {
 
     public void takeView(MainView view) {
         this.mView = view;
-        this.mGetMovieListInteractor.execute(new UserDetailsSubscriber());
+        this.mGetMovieListInteractor.execute("cars", new UserDetailsSubscriber());
     }
 
     public void dropView() {

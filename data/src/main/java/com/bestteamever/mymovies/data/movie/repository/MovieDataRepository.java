@@ -18,7 +18,7 @@ public class MovieDataRepository implements MovieRepository {
     }
 
     @Override
-    public Observable<List<Movie>> getList() {
-        return mCloudDataSource.get(mAuthorization);
+    public Observable<List<Movie>> getList(String title) {
+        return mCloudDataSource.get(mAuthorization, title);
     }
 }
