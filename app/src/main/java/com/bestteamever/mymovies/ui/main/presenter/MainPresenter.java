@@ -34,10 +34,6 @@ public class MainPresenter {
         this.mView.showMovies(movies);
     }
 
-    public void onItemClick(MovieModel movie) {
-        this.mView.goToItemDetail(movie);
-    }
-
     private final class UserDetailsSubscriber extends DefaultSubscriber<List<Movie>> {
 
         @Override

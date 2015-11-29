@@ -1,6 +1,8 @@
 package com.bestteamever.mymovies.ui.main.view;
 
 import android.os.Bundle;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.util.Pair;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -69,17 +71,32 @@ public class MainActivityFragment extends BaseFragment implements MainView {
         super.onDestroyView();
     }
 
-    private void onItemClick(int position) {
-        this.mPresenter.onItemClick(((MyMoviesListAdapter) this.mRecyclerView.getAdapter()).getItem(position));
+    private void onItemClick(RecyclerView rv, View view, int position) {
+        MovieModel item = ((MyMoviesListAdapter) this.mRecyclerView.getAdapter()).getItem(position);
+
+        mNavigator.navigateToItemDetail(getContext(), item, getActivityAnimOptions(view));
+    }
+
+    @SuppressWarnings ("unchecked")
+    private ActivityOptionsCompat getActivityAnimOptions(View view) {
+        Pair<View, String> titleTransition =
+                Pair.create(view.findViewById(R.id.title), getString(R.string.transition_title));
+        Pair<View, String> dateTransition =
+                Pair.create(view.findViewById(R.id.date), getString(R.string.transition_date));
+        Pair<View, String> overviewTransition =
+                Pair.create(view.findViewById(R.id.overview), getString(R.string.transition_overview));
+        Pair<View, String> imageTransition =
+                Pair.create(view.findViewById(R.id.image), getString(R.string.transition_image));
+
+        return ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(),
+                                                                  titleTransition,
+                                                                  dateTransition,
+                                                                  imageTransition,
+                                                                  overviewTransition);
     }
 
     @Override
     public void showMovies(List<MovieModel> movies) {
         this.mRecyclerView.setAdapter(new MyMoviesListAdapter(getContext(), movies));
-    }
-
-    @Override
-    public void goToItemDetail(MovieModel movie) {
-        mNavigator.navigateToItemDetail(getContext(), movie);
     }
 }

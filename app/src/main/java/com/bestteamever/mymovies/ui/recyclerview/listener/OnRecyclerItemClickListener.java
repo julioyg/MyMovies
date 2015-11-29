@@ -8,7 +8,7 @@ import android.view.View;
 
 public class OnRecyclerItemClickListener implements RecyclerView.OnItemTouchListener {
     public interface OnItemClickListener {
-        void onItemClick(int position);
+        void onItemClick(RecyclerView rv, View child, int position);
     }
 
     private final OnItemClickListener mListener;
@@ -30,7 +30,7 @@ public class OnRecyclerItemClickListener implements RecyclerView.OnItemTouchList
             View child = rv.findChildViewUnder(e.getX(), e.getY());
 
             if (child != null) {
-                this.mListener.onItemClick(rv.getChildAdapterPosition(child));
+                this.mListener.onItemClick(rv, child, rv.getChildAdapterPosition(child));
                 return true;
             }
         }
