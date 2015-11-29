@@ -15,7 +15,9 @@ import com.bestteamever.mymovies.R;
 
 public class InputTextDialog extends DialogFragment {
   private static final String ARG_TITLE = "com.bestteamever.mymovies.TITLE";
+
   @Bind(R.id.text) EditText mInputTextView;
+
   private OnInputTextListener mListener;
   private int mTitle;
 

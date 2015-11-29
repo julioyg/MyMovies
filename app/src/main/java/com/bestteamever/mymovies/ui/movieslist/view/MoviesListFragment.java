@@ -19,7 +19,7 @@ import com.bestteamever.mymovies.di.component.MainComponent;
 import com.bestteamever.mymovies.model.MovieModel;
 import com.bestteamever.mymovies.ui.dialog.input.InputTextDialog;
 import com.bestteamever.mymovies.ui.fragment.BaseFragment;
-import com.bestteamever.mymovies.ui.movieslist.presenter.MainPresenter;
+import com.bestteamever.mymovies.ui.movieslist.presenter.MoviesListPresenter;
 import com.bestteamever.mymovies.ui.navigation.Navigator;
 import com.bestteamever.mymovies.ui.recyclerview.listener.OnRecyclerItemClickListener;
 import java.util.List;
@@ -30,7 +30,7 @@ import javax.inject.Inject;
  */
 public class MoviesListFragment extends BaseFragment
     implements MoviesListView, InputTextDialog.OnInputTextListener {
-  @Inject MainPresenter mPresenter;
+  @Inject MoviesListPresenter mPresenter;
   @Inject Navigator mNavigator;
 
   @Bind(R.id.list) RecyclerView mRecyclerView;

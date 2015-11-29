@@ -10,11 +10,11 @@ import com.bestteamever.mymovies.ui.movieslist.view.MoviesListView;
 import java.util.List;
 import javax.inject.Inject;
 
-public class MainPresenter {
+public class MoviesListPresenter {
   private final GetMovieListInteractor mGetMovieListInteractor;
   private MoviesListView mView;
 
-  @Inject public MainPresenter(GetMovieListInteractor getMovieListInteractor) {
+  @Inject public MoviesListPresenter(GetMovieListInteractor getMovieListInteractor) {
     mGetMovieListInteractor = getMovieListInteractor;
   }
 
@@ -53,11 +53,11 @@ public class MainPresenter {
   private final class UserDetailsSubscriber extends DefaultSubscriber<List<Movie>> {
 
     @Override public void onNext(List<Movie> movies) {
-      MainPresenter.this.showMovies(MovieModelMapper.transform(movies));
+      MoviesListPresenter.this.showMovies(MovieModelMapper.transform(movies));
     }
 
     @Override public void onCompleted() {
-      MainPresenter.this.mView.dismissLoading();
+      MoviesListPresenter.this.mView.dismissLoading();
     }
   }
 }
