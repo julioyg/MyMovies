@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -16,21 +16,18 @@
 package com.bestteamever.mymovies.executor;
 
 import com.bestteamever.mymovies.domain.executor.ThreadExecutor;
-
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
-
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
 /**
  * Decorated {@link java.util.concurrent.ThreadPoolExecutor}
  */
-@Singleton
-public class JobExecutor implements ThreadExecutor {
+@Singleton public class JobExecutor implements ThreadExecutor {
 
   private static final int INITIAL_POOL_SIZE = 3;
   private static final int MAX_POOL_SIZE = 5;
@@ -47,16 +44,15 @@ public class JobExecutor implements ThreadExecutor {
 
   private final ThreadFactory threadFactory;
 
-  @Inject
-  public JobExecutor() {
+  @Inject public JobExecutor() {
     this.workQueue = new LinkedBlockingQueue<>();
     this.threadFactory = new JobThreadFactory();
-    this.threadPoolExecutor = new ThreadPoolExecutor(INITIAL_POOL_SIZE, MAX_POOL_SIZE,
-                                                     KEEP_ALIVE_TIME, KEEP_ALIVE_TIME_UNIT, this.workQueue, this.threadFactory);
+    this.threadPoolExecutor =
+        new ThreadPoolExecutor(INITIAL_POOL_SIZE, MAX_POOL_SIZE, KEEP_ALIVE_TIME,
+            KEEP_ALIVE_TIME_UNIT, this.workQueue, this.threadFactory);
   }
 
-  @Override
-  public void execute(Runnable runnable) {
+  @Override public void execute(Runnable runnable) {
     if (runnable == null) {
       throw new IllegalArgumentException("Runnable to execute cannot be null");
     }
@@ -67,8 +63,7 @@ public class JobExecutor implements ThreadExecutor {
     private static final String THREAD_NAME = "android_";
     private int counter = 0;
 
-    @Override
-    public Thread newThread(Runnable runnable) {
+    @Override public Thread newThread(Runnable runnable) {
       return new Thread(runnable, THREAD_NAME + counter);
     }
   }

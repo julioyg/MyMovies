@@ -2,70 +2,70 @@ package com.bestteamever.mymovies.model;
 
 import java.io.Serializable;
 
-public class MovieModel implements Serializable{
-    private final String mTitle;
-    private final String mDate;
-    private final String mPoster;
-    private final String mOverView;
+public class MovieModel implements Serializable {
+  private final String mTitle;
+  private final String mDate;
+  private final String mPoster;
+  private final String mOverView;
 
-    private MovieModel(Builder builder) {
-        this.mTitle = builder.mTitle;
-        this.mDate = builder.mDate;
-        this.mPoster = builder.mPoster;
-        this.mOverView = builder.mOverView;
+  private MovieModel(Builder builder) {
+    this.mTitle = builder.mTitle;
+    this.mDate = builder.mDate;
+    this.mPoster = builder.mPoster;
+    this.mOverView = builder.mOverView;
+  }
+
+  public static Builder newBuilder() {
+    return new Builder();
+  }
+
+  public String getTitle() {
+    return mTitle;
+  }
+
+  public String getDate() {
+    return mDate;
+  }
+
+  public String getPoster() {
+    return mPoster;
+  }
+
+  public String getOverView() {
+    return mOverView;
+  }
+
+  public static final class Builder {
+    public String mPoster;
+    public String mOverView;
+    private String mTitle;
+    private String mDate;
+
+    private Builder() {
     }
 
-    public static Builder newBuilder() {
-        return new Builder();
+    public Builder withTitle(String val) {
+      mTitle = val;
+      return this;
     }
 
-    public String getTitle() {
-        return mTitle;
+    public Builder withDate(String val) {
+      mDate = val;
+      return this;
     }
 
-    public String getDate() {
-        return mDate;
+    public Builder withPoster(String val) {
+      mPoster = val;
+      return this;
     }
 
-    public String getPoster() {
-        return mPoster;
+    public Builder withOverview(String val) {
+      mOverView = val;
+      return this;
     }
 
-    public String getOverView() {
-        return mOverView;
+    public MovieModel build() {
+      return new MovieModel(this);
     }
-
-    public static final class Builder {
-        public String mPoster;
-        public String mOverView;
-        private String mTitle;
-        private String mDate;
-
-        private Builder() {
-        }
-
-        public Builder withTitle(String val) {
-            mTitle = val;
-            return this;
-        }
-
-        public Builder withDate(String val) {
-            mDate = val;
-            return this;
-        }
-
-        public Builder withPoster(String val) {
-            mPoster = val;
-            return this;
-        }
-
-        public Builder withOverview(String val) {
-            mOverView = val;
-            return this;
-        }
-
-        public MovieModel build() {
-            return new MovieModel(this);
-        }
-    }
+  }
 }
