@@ -3,6 +3,7 @@ package com.bestteamever.mymovies.ui.moviedetail;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
 import com.bestteamever.mymovies.R;
@@ -29,7 +30,7 @@ public class MovieDetailActivity extends BaseActivity {
   @Override public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
       case android.R.id.home:
-        super.finish();
+        ActivityCompat.finishAfterTransition(this);
         return true;
     }
 
