@@ -5,4 +5,14 @@ import java.util.List;
 
 public interface MoviesListView {
   void showMovies(List<MovieModel> movies);
+
+  void showInputTitleDialog();
+
+  void showLoading();
+
+  void dismissLoading();
+
+  void showNoResults();
+
+  void showEmptySearchError();
 }

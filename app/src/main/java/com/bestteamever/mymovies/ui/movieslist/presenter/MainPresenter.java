@@ -1,5 +1,6 @@
 package com.bestteamever.mymovies.ui.movieslist.presenter;
 
+import android.text.TextUtils;
 import com.bestteamever.mymovies.domain.interactor.DefaultSubscriber;
 import com.bestteamever.mymovies.domain.interactor.movie.GetMovieListInteractor;
 import com.bestteamever.mymovies.domain.model.Movie;
@@ -19,7 +20,6 @@ public class MainPresenter {
 
   public void takeView(MoviesListView view) {
     this.mView = view;
-    this.mGetMovieListInteractor.execute("cars", new UserDetailsSubscriber());
   }
 
   public void dropView() {
@@ -28,13 +28,36 @@ public class MainPresenter {
   }
 
   private void showMovies(List<MovieModel> movies) {
+    if (movies.isEmpty()) {
+      this.mView.showNoResults();
+      return;
+    }
+
     this.mView.showMovies(movies);
+  }
+
+  public void onClickFloatingActionButton() {
+    this.mView.showInputTitleDialog();
+  }
+
+  public void getMoviesForTitle(String text) {
+    if (TextUtils.isEmpty(text)) {
+      this.mView.showEmptySearchError();
+      return;
+    }
+
+    this.mView.showLoading();
+    this.mGetMovieListInteractor.execute(text, new UserDetailsSubscriber());
   }
 
   private final class UserDetailsSubscriber extends DefaultSubscriber<List<Movie>> {
 
     @Override public void onNext(List<Movie> movies) {
       MainPresenter.this.showMovies(MovieModelMapper.transform(movies));
+    }
+
+    @Override public void onCompleted() {
+      MainPresenter.this.mView.dismissLoading();
     }
   }
 }

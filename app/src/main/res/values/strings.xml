@@ -5,4 +5,8 @@
   <string name="transition_overview">transition_overview</string>
   <string name="transition_date">transition_date</string>
   <string name="transition_title">transition_title</string>
+  <string name="ok">ok</string>
+  <string name="what_are_you_looking_for">What are you looking for?</string>
+  <string name="no_results">There are no results for your search :(</string>
+  <string name="error_empty_search">Such a naughty boy, are you trying with empty text?</string>
 </resources>
