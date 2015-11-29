@@ -1,4 +1,4 @@
-package com.bestteamever.mymovies.ui.main.view;
+package com.bestteamever.mymovies.ui.movieslist.view;
 
 import android.os.Bundle;
 import android.support.v4.app.ActivityOptionsCompat;
@@ -10,11 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bestteamever.mymovies.R;
-import com.bestteamever.mymovies.adapter.MyMoviesListAdapter;
+import com.bestteamever.mymovies.adapter.movie.MoviesListAdapter;
 import com.bestteamever.mymovies.di.component.MainComponent;
 import com.bestteamever.mymovies.model.MovieModel;
 import com.bestteamever.mymovies.ui.fragment.BaseFragment;
-import com.bestteamever.mymovies.ui.main.presenter.MainPresenter;
+import com.bestteamever.mymovies.ui.movieslist.presenter.MainPresenter;
 import com.bestteamever.mymovies.ui.navigation.Navigator;
 import com.bestteamever.mymovies.ui.recyclerview.listener.OnRecyclerItemClickListener;
 
@@ -28,18 +28,18 @@ import butterknife.ButterKnife;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class MainActivityFragment extends BaseFragment implements MainView {
+public class MoviesListFragment extends BaseFragment implements MoviesListView {
     @Inject MainPresenter mPresenter;
     @Inject Navigator mNavigator;
 
     @Bind ((R.id.list)) RecyclerView mRecyclerView;
 
-    public MainActivityFragment() {
+    public MoviesListFragment() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View result = inflater.inflate(R.layout.fragment_main, container, false);
+        View result = inflater.inflate(R.layout.fragment_movies_list, container, false);
 
         ButterKnife.bind(this, result);
 
@@ -72,7 +72,7 @@ public class MainActivityFragment extends BaseFragment implements MainView {
     }
 
     private void onItemClick(RecyclerView rv, View view, int position) {
-        MovieModel item = ((MyMoviesListAdapter) this.mRecyclerView.getAdapter()).getItem(position);
+        MovieModel item = ((MoviesListAdapter) this.mRecyclerView.getAdapter()).getItem(position);
 
         mNavigator.navigateToItemDetail(getContext(), item, getActivityAnimOptions(view));
     }
@@ -97,6 +97,6 @@ public class MainActivityFragment extends BaseFragment implements MainView {
 
     @Override
     public void showMovies(List<MovieModel> movies) {
-        this.mRecyclerView.setAdapter(new MyMoviesListAdapter(getContext(), movies));
+        this.mRecyclerView.setAdapter(new MoviesListAdapter(getContext(), movies));
     }
 }

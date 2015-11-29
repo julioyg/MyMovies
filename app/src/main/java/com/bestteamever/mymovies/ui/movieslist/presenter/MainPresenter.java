@@ -1,11 +1,11 @@
-package com.bestteamever.mymovies.ui.main.presenter;
+package com.bestteamever.mymovies.ui.movieslist.presenter;
 
 import com.bestteamever.mymovies.domain.interactor.DefaultSubscriber;
 import com.bestteamever.mymovies.domain.interactor.movie.GetMovieListInteractor;
 import com.bestteamever.mymovies.domain.model.Movie;
 import com.bestteamever.mymovies.model.MovieModel;
 import com.bestteamever.mymovies.model.mapper.MovieModelMapper;
-import com.bestteamever.mymovies.ui.main.view.MainView;
+import com.bestteamever.mymovies.ui.movieslist.view.MoviesListView;
 
 import java.util.List;
 
@@ -13,14 +13,14 @@ import javax.inject.Inject;
 
 public class MainPresenter {
     private final GetMovieListInteractor mGetMovieListInteractor;
-    private MainView mView;
+    private MoviesListView mView;
 
     @Inject
     public MainPresenter(GetMovieListInteractor getMovieListInteractor) {
         mGetMovieListInteractor = getMovieListInteractor;
     }
 
-    public void takeView(MainView view) {
+    public void takeView(MoviesListView view) {
         this.mView = view;
         this.mGetMovieListInteractor.execute("cars", new UserDetailsSubscriber());
     }

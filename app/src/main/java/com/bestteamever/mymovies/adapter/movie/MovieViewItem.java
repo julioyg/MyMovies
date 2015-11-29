@@ -1,4 +1,4 @@
-package com.bestteamever.mymovies.ui.main.view.movie;
+package com.bestteamever.mymovies.adapter.movie;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -25,7 +25,7 @@ public class MovieViewItem extends FrameLayout {
     }
 
     private void init() {
-        LayoutInflater.from(getContext()).inflate(R.layout.view_movie_item, this, true);
+        LayoutInflater.from(getContext()).inflate(R.layout.adapter_movie_item, this, true);
         ButterKnife.bind(this);
     }
 

@@ -1,4 +1,4 @@
-package com.bestteamever.mymovies.ui.main;
+package com.bestteamever.mymovies.ui.movieslist;
 
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -12,14 +12,14 @@ import com.bestteamever.mymovies.di.component.MainComponent;
 import com.bestteamever.mymovies.di.module.MainModule;
 import com.bestteamever.mymovies.ui.activity.BaseActivity;
 
-public class MainActivity extends BaseActivity implements HasComponent<MainComponent> {
+public class MoviesListActivity extends BaseActivity implements HasComponent<MainComponent> {
 
     private MainComponent mActivityComponent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_movies_list);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         this.initializeInjector();
