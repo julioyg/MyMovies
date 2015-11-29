@@ -2,8 +2,6 @@ package com.bestteamever.mymovies.ui.movieslist;
 
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 import com.bestteamever.mymovies.R;
 import com.bestteamever.mymovies.di.HasComponent;
 import com.bestteamever.mymovies.di.component.DaggerMainComponent;
@@ -17,10 +15,15 @@ public class MoviesListActivity extends BaseActivity implements HasComponent<Mai
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_movies_list);
-    Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-    setSupportActionBar(toolbar);
+    super.setContentView(R.layout.activity_movies_list);
+
+    this.configureActionBar();
     this.initializeInjector();
+  }
+
+  private void configureActionBar() {
+    Toolbar toolbar = (Toolbar) this.findViewById(R.id.toolbar);
+    super.setSupportActionBar(toolbar);
   }
 
   private void initializeInjector() {
@@ -28,26 +31,6 @@ public class MoviesListActivity extends BaseActivity implements HasComponent<Mai
         .applicationComponent(super.getApplicationComponent())
         .mainModule(new MainModule())
         .build();
-  }
-
-  @Override public boolean onCreateOptionsMenu(Menu menu) {
-    // Inflate the menu; this adds items to the action bar if it is present.
-    getMenuInflater().inflate(R.menu.menu_main, menu);
-    return true;
-  }
-
-  @Override public boolean onOptionsItemSelected(MenuItem item) {
-    // Handle action bar item clicks here. The action bar will
-    // automatically handle clicks on the Home/Up button, so long
-    // as you specify a parent activity in AndroidManifest.xml.
-    int id = item.getItemId();
-
-    //noinspection SimplifiableIfStatement
-    if (id == R.id.action_settings) {
-      return true;
-    }
-
-    return super.onOptionsItemSelected(item);
   }
 
   @Override public MainComponent getComponent() {
