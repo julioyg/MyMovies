@@ -6,10 +6,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.bestteamever.mymovies.R;
-import com.bestteamever.mymovies.dagger.HasComponent;
-import com.bestteamever.mymovies.dagger.component.DaggerMainComponent;
-import com.bestteamever.mymovies.dagger.component.MainComponent;
-import com.bestteamever.mymovies.dagger.module.MainModule;
+import com.bestteamever.mymovies.di.HasComponent;
+import com.bestteamever.mymovies.di.component.DaggerMainComponent;
+import com.bestteamever.mymovies.di.component.MainComponent;
+import com.bestteamever.mymovies.di.module.MainModule;
 import com.bestteamever.mymovies.ui.activity.BaseActivity;
 
 public class MainActivity extends BaseActivity implements HasComponent<MainComponent> {

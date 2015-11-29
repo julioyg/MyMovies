@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.bestteamever.mymovies.App;
-import com.bestteamever.mymovies.dagger.component.ApplicationComponent;
-import com.bestteamever.mymovies.dagger.module.ActivityModule;
+import com.bestteamever.mymovies.di.component.ApplicationComponent;
+import com.bestteamever.mymovies.di.module.ActivityModule;
 
 public class BaseActivity extends AppCompatActivity {
     @Override

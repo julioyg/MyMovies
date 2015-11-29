@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bestteamever.mymovies.R;
-import com.bestteamever.mymovies.model.Movie;
+import com.bestteamever.mymovies.model.MovieModel;
 import com.bestteamever.mymovies.ui.moviedetail.MovieDetailActivity;
 
 import butterknife.Bind;
@@ -28,12 +28,12 @@ public class MovieDetailFragment extends Fragment {
 
         ButterKnife.bind(this, result);
 
-        render((Movie) getActivity().getIntent().getSerializableExtra(MovieDetailActivity.MOVIE));
+        render((MovieModel) getActivity().getIntent().getSerializableExtra(MovieDetailActivity.INTENT_EXTRA_MOVIE));
 
         return result;
     }
 
-    private void render(Movie movie) {
+    private void render(MovieModel movie) {
         mOriginalTitleView.setText(movie.getTitle());
         mReleaseDateView.setText(movie.getDate());
         mOverview.setText(movie.getOverView());

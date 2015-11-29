@@ -9,10 +9,12 @@ import android.view.ViewGroup;
 
 import com.bestteamever.mymovies.R;
 import com.bestteamever.mymovies.adapter.MyMoviesListAdapter;
-import com.bestteamever.mymovies.dagger.component.MainComponent;
-import com.bestteamever.mymovies.model.Movie;
+import com.bestteamever.mymovies.di.component.MainComponent;
+import com.bestteamever.mymovies.model.MovieModel;
 import com.bestteamever.mymovies.ui.fragment.BaseFragment;
 import com.bestteamever.mymovies.ui.main.presenter.MainPresenter;
+import com.bestteamever.mymovies.ui.navigation.Navigator;
+import com.bestteamever.mymovies.ui.recyclerview.listener.OnRecyclerItemClickListener;
 
 import java.util.List;
 
@@ -26,6 +28,7 @@ import butterknife.ButterKnife;
  */
 public class MainActivityFragment extends BaseFragment implements MainView {
     @Inject MainPresenter mPresenter;
+    @Inject Navigator mNavigator;
 
     @Bind ((R.id.list)) RecyclerView mRecyclerView;
 
@@ -43,6 +46,7 @@ public class MainActivityFragment extends BaseFragment implements MainView {
         mRecyclerView.setHasFixedSize(true);
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mRecyclerView.addOnItemTouchListener(new OnRecyclerItemClickListener(getContext(), this::onItemClick));
 
         return result;
     }
@@ -50,23 +54,32 @@ public class MainActivityFragment extends BaseFragment implements MainView {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        intialize();
+        this.intialize();
     }
 
     private void intialize() {
         this.getComponent(MainComponent.class).inject(this);
-        mPresenter.takeView(this);
+        this.mPresenter.takeView(this);
     }
 
     @Override
     public void onDestroyView() {
-        mPresenter.dropView();
+        this.mPresenter.dropView();
 
         super.onDestroyView();
     }
 
+    private void onItemClick(int position) {
+        this.mPresenter.onItemClick(((MyMoviesListAdapter) this.mRecyclerView.getAdapter()).getItem(position));
+    }
+
     @Override
-    public void showMovies(List<Movie> movies) {
-        mRecyclerView.setAdapter(new MyMoviesListAdapter(getContext(), movies));
+    public void showMovies(List<MovieModel> movies) {
+        this.mRecyclerView.setAdapter(new MyMoviesListAdapter(getContext(), movies));
+    }
+
+    @Override
+    public void goToItemDetail(MovieModel movie) {
+        mNavigator.navigateToItemDetail(getContext(), movie);
     }
 }

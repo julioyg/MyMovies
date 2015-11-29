@@ -3,7 +3,7 @@ package com.bestteamever.mymovies.ui.fragment;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
-import com.bestteamever.mymovies.dagger.HasComponent;
+import com.bestteamever.mymovies.di.HasComponent;
 
 public abstract class BaseFragment extends Fragment {
 

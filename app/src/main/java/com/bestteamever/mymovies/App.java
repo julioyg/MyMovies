@@ -2,9 +2,9 @@ package com.bestteamever.mymovies;
 
 import android.app.Application;
 
-import com.bestteamever.mymovies.dagger.component.ApplicationComponent;
-import com.bestteamever.mymovies.dagger.component.DaggerApplicationComponent;
-import com.bestteamever.mymovies.dagger.module.ApplicationModule;
+import com.bestteamever.mymovies.di.component.ApplicationComponent;
+import com.bestteamever.mymovies.di.component.DaggerApplicationComponent;
+import com.bestteamever.mymovies.di.module.ApplicationModule;
 
 public class App extends Application {
 
